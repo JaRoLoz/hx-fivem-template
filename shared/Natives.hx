@@ -1,5 +1,26 @@
 package shared;
 
+@:native("_G")
+extern class Citizen {
+	static var source(default, null):Int;
+	static function Wait(ms:Int):Void;
+	static function CreateThread(callback:Void->Void):Void;
+	static function TriggerEvent(eventName:String, ...args:Dynamic):Void;
+	static function AddEventHandler(eventName:String, cb:(...Dynamic) -> Void):Void;
+	static function TriggerServerEvent(eventName:String, ...args:Dynamic):Void;
+	static function RegisterNetEvent(eventName:String, cb:(...Dynamic) -> Void):Void;
+	static function SendNUIMessage(message:Dynamic):Void;
+	static function SetNuiFocus(hasFocus:Bool, hasCursor:Bool):Void;
+	static function SetNuiFocusKeepInput(keepInput:Bool):Void;
+	static function RegisterNuiCallback(cbName:String, cb:(Dynamic, (Dynamic) -> Void) -> Void):Void;
+}
+
+@:native("_G.json")
+extern class Json {
+	static function decode(json:String):Dynamic;
+	static function encode(value:Dynamic):String;
+}
+
 class Vector3 {
 	extern public var x:Float;
 	extern public var y:Float;
